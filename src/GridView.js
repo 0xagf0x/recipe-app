@@ -16,6 +16,7 @@ import { toFirstCharUppercase } from "./constants";
 import SearchIcon from "@material-ui/icons/Search";
 import axios from "axios";
 import mockData from './mockData';
+import NewRecipeModal from './Components/NewRecipe/NewRecipeModal';
 
 const useStyles = makeStyles((theme) => ({
   navBar: {
@@ -141,13 +142,7 @@ const GridView = (props) => {
                   variant="standard"
                 />
               </div>
-              <Button 
-              variant="contained"
-              className={classes.newRecipeBtn}
-              onClick={handleNewRecipeForm}
-              size="small"
-              >Add Recipe
-              </Button>
+              <NewRecipeModal />
             </div>
         </Toolbar>
       </AppBar>
