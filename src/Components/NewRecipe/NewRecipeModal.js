@@ -65,7 +65,7 @@ function NewRecipeModal() {
     <div style={modalStyle} className={classes.paper}>
       <form id="form" className={classes.root} noValidate autoComplete="off">
         <div className={classes.formRow}>
-          <TextField required id="standard-required" label="Required" defaultValue="Dish Name" />
+          <TextField required id="standard-required" label="Dish Name" />
         </div>
         <div className={classes.formRow}>
           <TextField
