@@ -113,7 +113,7 @@ const GridView = (props) => {
   const getRecipeCard = (recipeID) => {
     const { id, name, image } = recipeData[recipeID];
     return (
-      <Grid item xs={4} key={recipeID} className={classes.cardHover}>
+      <Grid item xs={12} sm={4} key={recipeID} className={classes.cardHover}>
         <Card onClick={() => history.push(`/${id}`)} >
           <CardMedia
             className={classes.cardMedia}
