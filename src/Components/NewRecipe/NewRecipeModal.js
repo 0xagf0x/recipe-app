@@ -30,6 +30,11 @@ const useStyles = makeStyles((theme) => ({
     boxShadow: theme.shadows[5],
     padding: theme.spacing(2, 4, 3),
   },
+  formRow: {
+    textAlign: 'center',
+    margin: '10px',
+    padding: '10px',
+  }
 }));
 
 function NewRecipeModal() {
@@ -49,10 +54,10 @@ function NewRecipeModal() {
   const body = (
     <div style={modalStyle} className={classes.paper}>
       <form id="form" className={classes.root} noValidate autoComplete="off">
-        <div>
+        <div className={classes.formRow}>
           <TextField required id="standard-required" label="Required" defaultValue="Dish Name" />
         </div>
-        <div>
+        <div className={classes.formRow}>
           <TextField
             required
             id="outlined-required"
@@ -60,6 +65,8 @@ function NewRecipeModal() {
             variant="outlined"
             defaultValue=""
           />
+        </div>
+        <div className={classes.formRow}>
           <TextField
             required
             id="outlined-required"
@@ -69,7 +76,7 @@ function NewRecipeModal() {
             defaultValue=""
           />
         </div>
-        <div>
+        <div className={classes.formRow}>
           <Button
               variant="contained"
               component="label"
@@ -81,16 +88,16 @@ function NewRecipeModal() {
             />
           </Button>
         </div>
-        <div>
+        <div className={classes.formRow}> 
+          <Button variant="contained" color="primary">
+            Add
+          </Button>
           <Button 
           variant="contained" 
           color="secondary"
           onClick={handleClose}
           >
             Cancel
-          </Button>
-          <Button variant="contained" color="primary">
-            Add
           </Button>
         </div>
       </form>
