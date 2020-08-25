@@ -1,7 +1,9 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
-import Form from './Form';
+import TextField from '@material-ui/core/TextField';
+import Button from '@material-ui/core/Button';
+
 
 function rand() {
   return Math.round(Math.random() * 20) - 10;
@@ -46,14 +48,59 @@ function NewRecipeModal() {
 
   const body = (
     <div style={modalStyle} className={classes.paper}>
-      <Form/>
+      <form id="form" className={classes.root} noValidate autoComplete="off">
+        <div>
+          <TextField required id="standard-required" label="Required" defaultValue="Dish Name" />
+        </div>
+        <div>
+          <TextField
+            required
+            id="outlined-required"
+            label="Ingredients"
+            variant="outlined"
+            defaultValue=""
+          />
+          <TextField
+            required
+            id="outlined-required"
+            label="Directions"
+            variant="outlined"
+            className={classes.directions}
+            defaultValue=""
+          />
+        </div>
+        <div>
+          <Button
+              variant="contained"
+              component="label"
+          >
+          Upload Img
+            <input
+              type="file"
+              style={{ display: "none" }}
+            />
+          </Button>
+        </div>
+        <div>
+          <Button 
+          variant="contained" 
+          color="secondary"
+          onClick={handleClose}
+          >
+            Cancel
+          </Button>
+          <Button variant="contained" color="primary">
+            Add
+          </Button>
+        </div>
+      </form>
     </div>
   );
 
   return (
     <div>
       <button type="button" onClick={handleOpen}>
-        Add a Recipe
+        New
       </button>
       <Modal
         open={open}
