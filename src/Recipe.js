@@ -3,10 +3,36 @@ import { Typography, Link, CircularProgress, Button } from "@material-ui/core";
 import { toFirstCharUppercase } from "./constants";
 import axios from "axios";
 import mockData from './mockData';
+import { makeStyles } from "@material-ui/core/styles";
 
+
+
+const useStyles = makeStyles(() => ({
+  missingContainer: {
+    width: '500px',
+    margin: 'auto',
+    marginTop: '10%',
+    display: 'flex',
+    alignItems: 'center',
+    flexDirection: 'column',
+  },
+  missingText: {
+    textAlign: 'center',
+    fontFamily: 'helvetica',
+    fontSize: '32px',
+    margin: '1rem',
+  },
+  missingBackButton: {
+    backgroundColor: 'lightgrey',
+    margin: 'auto',
+    display: 'flex',
+    marginTop: '2rem',
+  },
+}));
 
 
 const Recipe = (props) => {
+  const classes = useStyles();
   const { match, history } = props;
   const { params } = match;
   const { recipeID } = params;
@@ -38,11 +64,10 @@ const Recipe = (props) => {
   };
   return (
     <>
-      {recipe === undefined && <CircularProgress />}
       {recipe !== undefined && recipe && generateRecipeJSX(recipe)}
-      {recipe === false && <><CircularProgress /><Typography> Recipe not found</Typography></>}
+      {recipe === false && <><div className={classes.missingContainer}><CircularProgress /><Typography className={classes.missingText}> Sorry, this recipe was not found</Typography></div></>}
       {recipe !== undefined && (
-        <Button variant="contained" onClick={() => history.push("/")}>
+        <Button className={classes.missingBackButton} variant="contained" onClick={() => history.push("/")}>
           Back
         </Button>
       )}
